@@ -1,9 +1,13 @@
 import React from 'react'
-import QuizApp from './QuizProject/QuizApp'
+import QuizApp from './QuizApp/page'
+import AgeCalculator from './AgeCalculator/page'
+import Navbar from '../components/Navbar'
 
 const AllProjects = () => {
   return (
     <div>
+      <Navbar />
+      <AgeCalculator />
       <QuizApp />
     </div>
   )

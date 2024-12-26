@@ -1,11 +1,11 @@
 
 "use client"
 import React from 'react'
-import AllProjects from './Projects/AllProjects'
+import Navbar from './components/Navbar'
 const page = () => {
   return (
     <div>
-     <AllProjects />
+     <Navbar />
     </div>
   )
 }

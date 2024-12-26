@@ -4,7 +4,7 @@ import { FaClockRotateLeft } from "react-icons/fa6";
 import { FaCircleCheck } from "react-icons/fa6";
 import { MdCancel } from "react-icons/md";
 import { FaArrowRight } from "react-icons/fa";
-import "./quiz.css";
+import Navbar from "@/app/components/Navbar";
 
 const AllcategoryQuestion = [
     {
@@ -742,7 +742,7 @@ const AllcategoryQuestion = [
 
 const QuizApp = () => {
     const QUIZ_TIME_LIMIT = 15;
-    const [numberOfQuestions, setNumberOfQuestions] = useState(5);
+    const [numberOfQuestions, setNumberOfQuestions] = useState(0);
     const [currentTime, setCurrentTime] = useState(QUIZ_TIME_LIMIT);
     const [timer, setTimer] = useState(null);
     const [programmingData, setProgrammingData] = useState([]);
@@ -872,100 +872,86 @@ const QuizApp = () => {
 
     return (
         <>
-            <div
-                className={`min-h-screen  flex px-2 ${showQuizMainPage ? "" : "hidden"
-                    } justify-center items-center flex-col `}
-            >
-                <div className="bg-gradient-to-bl from-slate-500 to-slate-200 p-5 rounded-lg">
-                    <h1 className="flex justify-center  items-center text-4xl my-10 sm:text-5xl font-bold tracking-wide  sm:my-10">
-                        Play&nbsp;<span className="bg-black text-white">Quiz</span>
+        <Navbar />
+            <div className={`min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-teal-50 flex px-4 ${showQuizMainPage ? "" : "hidden"} justify-center items-center flex-col py-10`}>
+                        <div className="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-8">
+                    <h1 className="text-center text-5xl font-bold mb-12 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                        Interactive Quiz
                     </h1>
-                    <div className="flex  flex-col gap-10 sm:gap-20">
+                    <div className="space-y-12">
                         {/* Select category */}
-                        <div className="selectCategory flex justify-center items-start sm:items-center gap-5 sm:gap-10 flex-col">
-                            <h2 className="text-lg  sm:text-2xl font-medium underline underline-offset-4 ">
-                                Select category
+                        <div className="space-y-6">
+                            <h2 className="text-2xl font-semibold text-gray-800 border-b pb-2">
+                                Select Category
                             </h2>
-                            <div className="category-option grid grid-cols-2 gap-7 sm:gap-10">
-                                {AllcategoryQuestion.map((cate, index) => {
-                                    return (
-                                        <button
-                                            key={index}
-                                            onClick={() => selectCategory(cate.category, index)}
-                                            className="px-3 py-2 sm:px-10 sm:py-3 sm:text-lg shadow-md shadow-black bg-teal-700 rounded-xl border-none text-white active:scale-95 hover:bg-teal-800 active:bg-teal-700"
-                                        >
-                                            {cate.category.charAt(0).toUpperCase() +
-                                                cate.category.slice(1)}
-                                        </button>
-                                    );
-                                })}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                                {AllcategoryQuestion.map((cate, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => selectCategory(cate.category, index)}
+                                        className="px-4 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white rounded-lg shadow-md transform transition hover:scale-105 font-medium"
+                                    >
+                                        {cate.category.charAt(0).toUpperCase() + cate.category.slice(1)}
+                                    </button>
+                                ))}
                             </div>
-
-                            <div>
+                            <div className="mt-4">
                                 {currentQuestion === null ? (
-                                    <p className="text-lg sm:text-xl bg-slate-300 px-1 font-medium text-red-600">
-                                        Please select category
+                                    <p className="text-red-500 bg-red-50 p-3 rounded-lg font-medium">
+                                        Please select a category to continue
                                     </p>
                                 ) : (
-                                    <p className="text-lg sm:text-xl">
-                                        You select this category:{" "}
-                                        <span className="font-bold  bg-black p-1 text-white">
+                                    <p className="text-green-600 bg-green-50 p-3 rounded-lg font-medium">
+                                        Selected category:{" "}
+                                        <span className="font-bold">
                                             {AllcategoryQuestion[selectCategoryQuestions]?.category
                                                 .charAt(0)
                                                 .toUpperCase() +
-                                                AllcategoryQuestion[
-                                                    selectCategoryQuestions
-                                                ]?.category.slice(1)}
+                                                AllcategoryQuestion[selectCategoryQuestions]?.category.slice(1)}
                                         </span>
                                     </p>
                                 )}
                             </div>
                         </div>
+
                         {/* Select questions Length */}
-                        <div className="selectCategory flex justify-center items-start sm:items-center gap-5 sm:gap-10 flex-col">
-                            <h2 className="text-lg  sm:text-2xl font-medium underline underline-offset-4">
-                                No. of questions
+                        <div className="space-y-6">
+                            <h2 className="text-2xl font-semibold text-gray-800 border-b pb-2">
+                                Number of Questions
                             </h2>
-                            <div className="category-option grid grid-cols-3 sm:grid-cols-5 gap-7">
-                                {[5, 10, 15, 20, 25].map((num, index) => {
-                                    return (
-                                        <button
-                                            key={index}
-                                            onClick={() => selectNumberOfQuestion(num)}
-                                            className="px-5 py-2 sm:px-7 sm:py-3 sm:text-lg shadow-md shadow-black bg-teal-700 rounded-xl border-none text-white active:scale-95 hover:bg-teal-800"
-                                        >
-                                            {num}
-                                        </button>
-                                    );
-                                })}
+                            <div className="grid grid-cols-3 sm:grid-cols-5 gap-4">
+                                {[5, 10, 15, 20, 25].map((num, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => selectNumberOfQuestion(num)}
+                                        className="px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white rounded-lg shadow-md transform transition hover:scale-105 font-medium"
+                                    >
+                                        {num}
+                                    </button>
+                                ))}
                             </div>
-                            <div>
-                                {numberOfQuestions === 5 ? (
-                                    <p className="text-lg sm:text-xl">
-                                        Default <span className="text-white bg-black px-1">5</span>{" "}
-                                        questions
+                            <div className="mt-4">
+                                {numberOfQuestions === 0 ? (
+                                    <p className="text-gray-600 bg-gray-50 p-3 rounded-lg font-medium">
+                                        Select number of questions to begin
                                     </p>
                                 ) : (
-                                    <p className="text-lg sm:text-xl">
-                                        You selected{" "}
-                                        <span className="text-white bg-black px-1">
-                                            {numberOfQuestions}
-                                        </span>{" "}
-                                        questions
+                                    <p className="text-blue-600 bg-blue-50 p-3 rounded-lg font-medium">
+                                        Selected {numberOfQuestions} questions
                                     </p>
                                 )}
                             </div>
                         </div>
 
-                        {/* Start */}
-                        <div className="flex justify-center items-center mb-10">
+                        {/* Start Button */}
+                        <div className="flex justify-center pt-6">
                             <button
                                 onClick={handleResetQuestionQuiz}
-                                className="px-10 py-3 shadow-black shadow-md font-bold rounded-full bg-teal-700 hover:bg-teal-800 active:scale-95 text-white"
-                                style={{
-                                    pointerEvents:
-                                        currentQuestion !== null ? "auto" : "none",
-                                }}
+                                className={`px-12 py-4 text-lg font-bold rounded-full transform transition ${currentQuestion !== null && numberOfQuestions
+                                        ? "bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white hover:scale-105"
+                                        : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                                    }`}
+                                disabled={!(currentQuestion !== null && numberOfQuestions)}
                             >
                                 Start Quiz
                             </button>
@@ -976,125 +962,106 @@ const QuizApp = () => {
 
             {/* Quiz Container */}
             {!showQuizMainPage && (
-                <div className="my-52 flex flex-col gap-20 p-2 sm:p-0 justify-center items-center">
-                    {!showScore && (
-                        <div className="flex justify-center items-center flex-col gap-10 sm:gap-14 bg-slate-200 p-5 sm:p-10 rounded-xl shadow-md shadow-black">
-                            <div className="flex justify-between w-full items-start gap-10">
-                                <h1 className="text-xl font-bold sm:text-3xl md:text-4xl">
-                                    Quiz Application For{" "}
-                                    {AllcategoryQuestion[selectCategoryQuestions].category
-                                        .charAt(0)
-                                        .toUpperCase() +
-                                        AllcategoryQuestion[selectCategoryQuestions].category.slice(
-                                            1
-                                        )}
-                                </h1>
-                                <div className="flex bg-slate-700 p-2 rounded-md text-white font-bold justify-center gap-2 sm:gap-3 items-center">
-                                    <FaClockRotateLeft size={20} />
-                                    <p>{currentTime}s</p>
+                <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-teal-50 py-10 px-4">
+                    <div className="max-w-4xl mx-auto">
+                        {!showScore && (
+                            <div className="bg-white rounded-2xl shadow-xl p-8">
+                                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
+                                    <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
+                                        {AllcategoryQuestion[selectCategoryQuestions].category
+                                            .charAt(0)
+                                            .toUpperCase() +
+                                            AllcategoryQuestion[selectCategoryQuestions].category.slice(1)} Quiz
+                                    </h1>
+                                    <div className="flex items-center gap-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-4 py-2 rounded-lg">
+                                        <FaClockRotateLeft className="text-xl" />
+                                        <span className="text-xl font-bold">{currentTime}s</span>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="flex flex-col justify-center items-start gap-5 w-full">
                                 {currentQuestion && currentQuestion.options && (
-                                    <>
-                                        <h1 className="text-xl font-bold sm:text-3xl md:text-4xl">
+                                    <div className="space-y-8">
+                                        <h2 className="text-xl md:text-2xl font-semibold text-gray-700">
                                             {currentQuestion.question}
-                                        </h1>
-                                        <div className="option flex justify-center items-center gap-4 flex-col sm:text-lg w-full">
+                                        </h2>
+                                        <div className="grid gap-4">
                                             {currentQuestion.options.map((option, index) => (
-                                                <div
-                                                    onClick={() => handleCorrectAnswer(index)}
+                                                <button
                                                     key={index}
-                                                    className={`border-2 ${selectedAnswer !== null
+                                                    onClick={() => handleCorrectAnswer(index)}
+                                                    className={`w-full p-4 rounded-xl text-left transition-all ${selectedAnswer !== null
                                                             ? index === currentQuestion.correctAnswer
-                                                                ? "bg-green-300 border-green-500 "
+                                                                ? "bg-green-100 border-2 border-green-500"
                                                                 : index === selectedAnswer
-                                                                    ? "bg-red-300 border-red-500 "
-                                                                    : "opacity-50 bg-slate-400"
-                                                            : "bg-slate-400"
-                                                        } active:bg-slate-400 p-2 rounded-md cursor-pointer`}
-                                                    style={{
-                                                        pointerEvents:
-                                                            selectedAnswer !== null ? "none" : "auto",
-                                                    }}
+                                                                    ? "bg-red-100 border-2 border-red-500"
+                                                                    : "bg-gray-100 opacity-50"
+                                                            : "bg-white border-2 border-gray-200 hover:border-purple-500"
+                                                        } flex justify-between items-center`}
+                                                    disabled={selectedAnswer !== null}
                                                 >
-                                                    <p>{option}</p>
+                                                    <span className="text-lg">{option}</span>
                                                     {selectedAnswer !== null && (
                                                         <>
                                                             {index === currentQuestion.correctAnswer && (
-                                                                <FaCircleCheck
-                                                                    size={30}
-                                                                    className="text-green-600"
-                                                                />
+                                                                <FaCircleCheck className="text-2xl text-green-500" />
                                                             )}
-                                                            {index === selectedAnswer &&
-                                                                index !== currentQuestion.correctAnswer && (
-                                                                    <MdCancel
-                                                                        size={30}
-                                                                        className="text-red-600"
-                                                                    />
-                                                                )}
+                                                            {index === selectedAnswer && index !== currentQuestion.correctAnswer && (
+                                                                <MdCancel className="text-2xl text-red-500" />
+                                                            )}
                                                         </>
                                                     )}
-                                                </div>
+                                                </button>
                                             ))}
                                         </div>
+
                                         {showCorrectAnswer && (
-                                            <div className="mt-4 text-lg font-bold">
-                                                <p>
-                                                    The correct answer is:{" "}
-                                                    {
-                                                        currentQuestion.options[
-                                                        currentQuestion.correctAnswer
-                                                        ]
-                                                    }
+                                            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+                                                <p className="text-blue-700 font-medium">
+                                                    Correct answer: {currentQuestion.options[currentQuestion.correctAnswer]}
                                                 </p>
                                             </div>
                                         )}
-                                    </>
+
+                                        <div className="flex flex-wrap  gap-5 justify-between items-center mt-8">
+                                            <p className="text-lg font-medium text-gray-600">
+                                                Question {questionIndexHistory.length} of {numberOfQuestions}
+                                            </p>
+                                            {selectedAnswer !== null &&
+                                                questionIndexHistory.length < Math.min(programmingData.length, numberOfQuestions) && (
+                                                    <button
+                                                        onClick={() => handleRandomQuestion(programmingData)}
+                                                        className="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white px-6 py-3 rounded-lg font-medium transition transform hover:scale-105"
+                                                    >
+                                                        Next Question <FaArrowRight />
+                                                    </button>
+                                                )}
+                                        </div>
+                                    </div>
                                 )}
-
-                                <div className="flex justify-between items-center gap-10 sm:w-full">
-                                    <p className="text-lg underline underline-offset-2">
-                                        <span className="font-bold">
-                                            {questionIndexHistory.length} / {numberOfQuestions}
-                                        </span>{" "}
-                                        Questions
-                                    </p>
-                                    {selectedAnswer !== null &&
-                                        questionIndexHistory.length <
-                                        Math.min(programmingData.length, numberOfQuestions) && (
-                                            <button
-                                                onClick={() => handleRandomQuestion(programmingData)}
-                                                className={`flex gap-3 items-center bg-blue-500 hover:bg-blue-700 active:scale-95 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}
-                                            >
-                                                Next <FaArrowRight />
-                                            </button>
-                                        )}
-                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
 
-                    {/* show Result */}
-                    {showScore && (
-                        <div className="winning-section flex flex-col justify-center items-center gap-5 bg-slate-700 p-10 rounded-xl shadow-md shadow-black ">
-                            <h1 className="text-3xl md:text-4xl font-bold text-white w-full">Quiz Complete</h1>
-                            <p className="text-2xl font-bold text-white tracking-wide text-center">
-                                You answered <span className="text-green-600">{score}</span> out
-                                of <span className="text-green-600">{numberOfQuestions}</span>{" "}
-                                questions correct{" "}
-                                <span className="text-green-600">Great !!</span>
-                            </p>
-                            <button
-                                onClick={hanldeshowQuizMainPage}
-                                className="bg-blue-500 hover:bg-blue-700 active:scale-95 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            >
-                                Try Again
-                            </button>
-                        </div>
-                    )}
+                        {showScore && (
+                            <div className="bg-white rounded-2xl shadow-xl p-8 text-center space-y-6">
+                                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                                    Quiz Complete!
+                                </h2>
+                                <div className="py-6">
+                                    <p className="text-xl text-gray-700">
+                                        You scored <span className="text-green-500 font-bold">{score}</span> out of{" "}
+                                        <span className="text-green-500 font-bold">{numberOfQuestions}</span>
+                                    </p>
+                                    <p className="text-purple-600 font-medium mt-2">Well done!</p>
+                                </div>
+                                <button
+                                    onClick={hanldeshowQuizMainPage}
+                                    className="bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white px-8 py-3 rounded-lg font-medium transition transform hover:scale-105"
+                                >
+                                    Try Another Quiz
+                                </button>
+                            </div>
+                        )}
+                    </div>
                 </div>
             )}
         </>

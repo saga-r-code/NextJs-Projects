@@ -81,10 +81,10 @@ const Navbar = () => {
                   Age Calculator
                 </Link>
                 <Link
-                  href="/Projects/Project3"
+                  href="/Projects/WheatherApp"
                   className="block px-4 py-2 my-2 tracking-wide text-start   text-gray-300 hover:scale-105 hover:underline hover:text-white"
                 >
-                  Project 3
+                   Wheather App
                 </Link>
               </div>
             </div>

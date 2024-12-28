@@ -2,14 +2,16 @@ import React from 'react'
 import QuizApp from './QuizApp/page'
 import AgeCalculator from './AgeCalculator/page'
 import Navbar from '../components/Navbar'
+import WheatherApp from './WheatherApp/page'
 
 const AllProjects = () => {
   return (
-    <div>
+    <main className='relative min-h-screen w-screen overflow-x-hidden'>
       <Navbar />
-      <AgeCalculator />
       <QuizApp />
-    </div>
+      <AgeCalculator />
+      <WheatherApp  />
+    </main>
   )
 }
 

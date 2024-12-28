@@ -84,7 +84,7 @@ const AgeCalculator = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-violet-600 via-indigo-500 to-purple-700 p-4">
+      <div className="relative overflow-x-hidden  h-dvh w-screen flex justify-center items-center bg-gradient-to-br from-violet-600 via-indigo-500 to-purple-700 p-4">
         <div className="w-full max-w-lg mx-auto backdrop-blur-xl bg-white/10 p-8 md:p-10 rounded-3xl shadow-2xl border border-white/20 transform transition-all duration-500 hover:shadow-3xl">
           <div className="space-y-8">
             <div className="text-center space-y-5">

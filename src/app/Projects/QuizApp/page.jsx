@@ -873,7 +873,7 @@ const QuizApp = () => {
     return (
         <>
         <Navbar />
-            <div className={`relative overflow-x-hidden h-dvh w-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-teal-50 flex px-4 ${showQuizMainPage ? "" : "hidden"} justify-center items-center flex-col py-10`}>
+            <div className={`layout-style bg-gradient-to-br from-indigo-100 via-purple-50 to-teal-50 flex px-4 ${showQuizMainPage ? "" : "hidden"}  py-10`}>
                         <div className="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-8">
                     <h1 className="text-center text-5xl font-bold mb-12 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                         Interactive Quiz

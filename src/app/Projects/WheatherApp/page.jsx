@@ -58,10 +58,10 @@ const WheatherApp = () => {
   };
 
   return (
-    <div className="min-h-screen py-10 bg-gradient-to-br from-slate-600 to-indigo-600">
+    <div className="layout-style py-10 bg-gradient-to-br from-sky-800 via-blue-700 to-cyan-900">
       <Navbar />
       <div className="container mx-auto px-4 py-8  flex flex-col items-center justify-center">
-        <h1 className="text-4xl text-center  sm:text-5xl md:text-6xl font-extrabold mb-10 sm:mb-12  bg-gradient-to-br from-slate-100 to-slate-600 text-transparent bg-clip-text  animate-text">
+        <h1 className="text-4xl text-center  sm:text-5xl md:text-6xl font-bold mb-10 sm:mb-12  text-slate-200 tracking-wide">
           Weather Forecast
         </h1>
         

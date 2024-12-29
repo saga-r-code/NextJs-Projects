@@ -67,7 +67,7 @@ const Navbar = () => {
               w-full md:w-auto
             `}
             >
-              <div className="bg-blue-900 rounded-xl min-w-[250px] shadow-lg w-full md:w-auto">
+              <div className="bg-blue-900 rounded-xl min-w-[250px] shadow-lg w-full md:w-auto overflow-hidden ">
                 <Link
                   href="/Projects/QuizApp"
                   className="block px-4 py-2 my-2 tracking-wide text-start  border-b text-gray-300 hover:scale-105 hover:underline hover:text-white"
@@ -82,9 +82,15 @@ const Navbar = () => {
                 </Link>
                 <Link
                   href="/Projects/WheatherApp"
-                  className="block px-4 py-2 my-2 tracking-wide text-start   text-gray-300 hover:scale-105 hover:underline hover:text-white"
+                  className="block px-4 py-2 my-2 tracking-wide text-start border-b   text-gray-300 hover:scale-105 hover:underline hover:text-white"
                 >
                    Wheather App
+                </Link>
+                <Link
+                  href="/Projects/Calculator"
+                  className="block px-4 py-2 my-2 tracking-wide text-start   text-gray-300 hover:scale-105 hover:underline hover:text-white"
+                >
+                   Calculator App
                 </Link>
               </div>
             </div>

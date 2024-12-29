@@ -3,6 +3,7 @@ import QuizApp from './QuizApp/page'
 import AgeCalculator from './AgeCalculator/page'
 import Navbar from '../components/Navbar'
 import WheatherApp from './WheatherApp/page'
+import Calculator from './Calculator/page'
 
 const AllProjects = () => {
   return (
@@ -11,6 +12,7 @@ const AllProjects = () => {
       <QuizApp />
       <AgeCalculator />
       <WheatherApp  />
+      <Calculator />
     </main>
   )
 }

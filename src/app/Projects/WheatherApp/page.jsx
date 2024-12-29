@@ -11,7 +11,7 @@ const WheatherApp = () => {
   const [inputCity, setInputCity] = useState("Dombivali");
   const [weatherData, setWeatherData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const APIKEY = process.env.NEXT_PUBLIC_WHEATHER_API_KEY;
+  const APIKEY = process.env.NEXT_PUBLIC_WHEATHER_API_KEY || "fb820fda12e2e307be46cbc1f5816ec9"
 
   const fetchWeatherData = async (city) => {
     setIsLoading(true);

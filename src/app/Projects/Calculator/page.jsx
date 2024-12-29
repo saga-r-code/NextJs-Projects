@@ -29,7 +29,7 @@ const page = () => {
                 className="w-full outline-none hover:scale-105 transition-all duration-300 bg-[#2a313b] text-right p-3 sm:p-5 pt-16 sm:pt-20 shadow-inner shadow-black text-white text-2xl  rounded-xl"
               />
             </div>
-            <form onSubmit={handleCaluclate} className="grid grid-cols-4 gap-4 text-sm text-left sm:gap-8 text-white sm:text-lg transition-shadow duration-500">
+            <form onSubmit={handleCaluclate} className="calculator grid grid-cols-4 gap-4 text-sm text-left sm:gap-8 text-white sm:text-lg transition-shadow duration-500">
               <input  value="AC" type="button" className="text-cyan-400" onClick={() => setHandleOutput('')} />
               <input value="DE" type="button" className="text-cyan-400" onClick={() => setHandleOutput(handleOutput.slice(0,-1))}/>
               <input value="%" type="button" className="text-cyan-400" onClick={() => setHandleOutput(handleOutput + '%')} />
@@ -58,7 +58,7 @@ const page = () => {
               
               <button
                 type="submit"
-                className="text-cyan-400"
+                className="total text-cyan-400"
               >
                 =
               </button>

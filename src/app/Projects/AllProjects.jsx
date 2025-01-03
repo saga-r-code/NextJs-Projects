@@ -4,6 +4,7 @@ import AgeCalculator from './AgeCalculator/page'
 import Navbar from '../components/Navbar'
 import WheatherApp from './WheatherApp/page'
 import Calculator from './Calculator/page'
+import PasswordGenerator from './PasswordGenerator/page'
 
 const AllProjects = () => {
   return (
@@ -13,6 +14,7 @@ const AllProjects = () => {
       <AgeCalculator />
       <WheatherApp  />
       <Calculator />
+      <PasswordGenerator />
     </main>
   )
 }

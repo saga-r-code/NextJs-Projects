@@ -757,14 +757,34 @@ const QuizApp = () => {
 
     // reset Timer
     const resetTimer = () => {
-        clearInterval(timer);
+        // Clear any existing timer
+        if (timer) {
+            clearInterval(timer);
+            setTimer(null); // Important: Reset the timer state
+        }
         setCurrentTime(QUIZ_TIME_LIMIT);
         setShowCorrectAnswer(false);
-        startTimer();
     };
 
-    // start Timer
-    const startTimer = () => {
+    // Random Question Generator
+    const handleRandomQuestion = (data) => {
+        if (data.length === 0) return;
+        
+        let index;
+        do {
+            index = Math.floor(Math.random() * data.length);
+        } while (questionIndexHistory.includes(index));
+
+        // First update the question state
+        setCurrentQuestion(data[index]);
+        setQuestionIndexHistory([...questionIndexHistory, index]);
+        setSelectedAnswer(null);
+        setShowCorrectAnswer(false);
+        
+        // Then handle the timer
+        resetTimer();
+        
+        // Create new timer after state updates
         const newTimer = setInterval(() => {
             setCurrentTime((prevTime) => {
                 if (prevTime <= 1) {
@@ -776,22 +796,6 @@ const QuizApp = () => {
             });
         }, 1000);
         setTimer(newTimer);
-    };
-
-    // Random Question Generator
-    const handleRandomQuestion = (data) => {
-        if (data.length === 0) return;
-        resetTimer(); // Reset the timer
-
-        let index;
-        do {
-            index = Math.floor(Math.random() * data.length);
-        } while (questionIndexHistory.includes(index)); // Ensure the question is not repeated
-
-        setCurrentQuestion(data[index]); // Set the new current question
-        setQuestionIndexHistory([...questionIndexHistory, index]); // Update the history
-        setSelectedAnswer(null); // Reset selected answer
-        setShowCorrectAnswer(false); // Hide correct answer indication
     };
 
     // Correct Answer Check
@@ -845,13 +849,12 @@ const QuizApp = () => {
         setScore(0);
         setSelectedAnswer(null);
         setShowCorrectAnswer(false);
+        setQuestionIndexHistory([]);
 
-        // Reset the timer and fetch a new question
-        resetTimer();
+        // Let handleRandomQuestion handle the timer
         handleRandomQuestion(
             AllcategoryQuestion[selectCategoryQuestions].questions
         );
-        setQuestionIndexHistory([]);
     };
 
     useEffect(() => {
@@ -866,7 +869,9 @@ const QuizApp = () => {
 
     useEffect(() => {
         return () => {
-            clearInterval(timer);
+            if (timer) {
+                clearInterval(timer);
+            }
         };
     }, [timer]);
 
@@ -1069,3 +1074,4 @@ const QuizApp = () => {
 };
 
 export default QuizApp;
+

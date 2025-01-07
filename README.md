@@ -14,8 +14,15 @@ SEO Optimized: Every project is SEO-friendly, making them great examples of real
 # 📚 Included Projects
 
 ## 1. Quiz App
- * An interactive quiz application with dynamic question generation.
+* An interactive quiz application with dynamic question generation.
 * Features: Timer, score tracking, and category-based questions.
+
+## 2. Age Calculator
+## 3. Wheather App
+## 4. Calculator App
+## 5. Password Generator
+## 6. Tic Tac Toe
+
 
 ---
 

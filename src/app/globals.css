@@ -10,6 +10,10 @@
   .calculator input, .total {
     @apply shadow-md cursor-pointer shadow-black/40 bg-[#374252] sm:font-semibold py-2 px-4 sm:py-4 sm:px-5 rounded-xl hover:scale-105  active:scale-95 duration-300 hover:border-slate-400 border-transparent border hover:bg-[#2c343f] active:shadow-inner hover:shadow-black transition-all 
   }
+
+  .tictactoe {
+    @apply flex justify-center items-center text-3xl sm:text-6xl font-extrabold text-white backdrop-blur-lg bg-slate-600/20 backdrop-filter rounded-2xl sm:rounded-3xl shadow-md shadow-black cursor-pointer active:scale-95 transition-all duration-300 border border-transparent hover:border-slate-400 aspect-square w-full;
+  }
 }
 
 

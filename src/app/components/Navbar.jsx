@@ -41,7 +41,7 @@ const Navbar = () => {
         transition-transform duration-300
         fixed left-0 top-0
         h-screen w-screen md:w-20
-        bg-gradient-to-b from-blue-950 to-blue-900
+        backdrop-filter backdrop-blur-xl bg-gradient-to-tr from-black/40 to-black/50 rounded-r-md border-r-2 brightness-100 
         md:flex md:flex-col
       `}
       >
@@ -94,9 +94,15 @@ const Navbar = () => {
                 </Link>
                 <Link
                   href="/Projects/PasswordGenerator"
-                  className="block px-4 py-2 my-2 tracking-wide text-start   text-gray-300 hover:scale-105 hover:underline hover:text-white"
+                  className="block px-4 py-2 my-2 tracking-wide text-start border-b  text-gray-300 hover:scale-105 hover:underline hover:text-white"
                 >
                    Password Generator
+                </Link>
+                <Link
+                  href="/Projects/TicTacToe"
+                  className="block px-4 py-2 my-2 tracking-wide text-start  text-gray-300 hover:scale-105 hover:underline hover:text-white"
+                >
+                   Tic Tac Toe
                 </Link>
               </div>
             </div>

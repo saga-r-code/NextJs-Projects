@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import WheatherApp from './WheatherApp/page'
 import Calculator from './Calculator/page'
 import PasswordGenerator from './PasswordGenerator/page'
+import TicTacToe from './TicTacToe/page'
 
 const AllProjects = () => {
   return (
@@ -15,6 +16,7 @@ const AllProjects = () => {
       <WheatherApp  />
       <Calculator />
       <PasswordGenerator />
+      <TicTacToe />
     </main>
   )
 }
